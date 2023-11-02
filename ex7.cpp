@@ -7,7 +7,45 @@ using namespace std;
 // Cette fonction doit fonctionner pour n positif ou nul et
 // pour b entre 2 et 36. Les chiffres de 10 à 35 utilisent
 // les lettres majuscules de A à Z.
+string inversion(string res){
+    string inverse = res;
 
+    for(size_t j = 0 ; j < res.size() ;j++){
+        inverse[j] = res[res.size() - j -1];
+
+    }
+
+    return inverse;
+}
+char reVal(int num)
+{
+    if (num >= 0 && num <= 9)
+        return (char)(num + '0');
+    else
+        return (char)(num - 10 + 'A');
+}
+string en_base(int n, int b){
+
+    string res;
+    if(n == 0){
+        res = '0';
+    }
+    if(b < 2){
+        res = "Erreur : base invalide";
+        return res;
+    }
+
+    while (n > 0) {
+        res.push_back(reVal(n % b));
+
+        n /= b;
+    }
+
+
+    res = inversion(res);
+
+    return res;
+}
 int main() {
 
   for(int b = 2; b <= 36; ++b)

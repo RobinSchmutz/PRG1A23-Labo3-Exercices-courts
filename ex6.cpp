@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <limits>
 using namespace std;
 
 // écrire la fonction multiplier qui permette au programme
@@ -12,7 +12,17 @@ using namespace std;
 //543 * 876 = 475668
 //1234567 8765432
 //Le produit de 1234567 et 8765432 depasse la limite du type unsigned
+unsigned multiplier(unsigned &a, unsigned &b, unsigned &r){
+    long long c = a, d = b, res;
+    res  = c * b;
+    if(numeric_limits<unsigned>::max()< (c *d)){
+        return 0;
+    }
+    r = a * b;
 
+
+    return r;
+}
 int main() {
 
    unsigned a, b, r;
