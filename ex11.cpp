@@ -31,7 +31,26 @@ using namespace std;
 //| 68: h | 69: i | 6A: j | 6B: k | 6C: l | 6D: m | 6E: n | 6F: o |
 //| 70: p | 71: q | 72: r | 73: s | 74: t | 75: u | 76: v | 77: w |
 //| 78: x | 79: y | 7A: z | 7B: { | 7C: | | 7D: } | 7E: ~ | 7F:   |
+void ascii_table(int n){
+    char ascii = 0;
+    int k = 0;
+    int ligne = 128 /n;
+    for(int j = 0; j< ligne; j++){
+        cout << "|";
+        for(int i = 0; i<n; i++, k++){
+            if(isprint(ascii)){
+                cout << setw(3)<< setbase(16) <<  k << ": " << setw(2) <<  ascii << " |";
+            }else{
+                cout <<setw(3)<< setbase(16)  << k << ": " << setw(4)<< "|";
+            }
 
+            ascii++;
+        }
+        cout << endl;
+
+    }
+
+}
 int main() {
    ascii_table(8);
 }
