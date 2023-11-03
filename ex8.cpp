@@ -16,11 +16,11 @@ int nb_lignes(string filename){
     }
     string ligne;
     int i = 0;
-    while(filen){
+    while(filen.eof() == 0){
         getline(filen, ligne);
         ++i;
     }
-    return i-1;
+    return i;
 
 }
 int main() {

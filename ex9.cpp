@@ -7,16 +7,25 @@ using namespace std;
 // écrire une fonction nb_char_in_file(filename, c) qui compte le nombre
 // de fois que la caractère c apparait dans le fichier. Il doit retourner
 // une valeur négative en cas d'impossibilité d'ouvrir le fichier
-int nb_char_in_file(string filename, char c){
+int nb_char_in_file(string filename, char c) {
     fstream filen;
-    int i= 0;
+    int i = 0;
     filen.open(filename);
-    if(!filen){
+    if (!filen) {
         return -1;
     }
-    while(filen>>noskipws>>c){
-        i++;
+    string ligne;
+
+    while (filen.eof() == 0) {
+        getline(filen, ligne);
+        for (size_t j = 0; j <= ligne.length(); j++) {
+            if (ligne[j] == c) {
+                i++;
+            }
+        }
     }
+
+
 
     return i;
 }

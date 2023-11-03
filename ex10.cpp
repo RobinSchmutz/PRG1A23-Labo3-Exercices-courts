@@ -10,7 +10,42 @@ using namespace std;
 // ainsi que le nombre de fois qu'il apparait. Ce nombre est négatif
 // si le fichier est illisible.
 
+struct requrence {
+    char c;
+    int n;
 
+};
+
+requrence caractere_le_plus_frequent(string filename){
+
+    requrence res{};
+    int most_frequent = 0;
+    char lettre_frequent = 0;
+
+
+    for(char alphabet = 'a'; alphabet < 'z'; alphabet++){
+        fstream filen;
+        filen.open(filename);
+        if (!filen) {
+            return res;
+        }
+        string ligne;
+        int i = 0;
+        while (filen.eof() == 0) {
+            getline(filen, ligne);
+            for (size_t j = 0; j <= ligne.length(); j++) {
+                if (ligne[j] == alphabet) {
+                    i++;
+                }
+            }
+        }
+        if(i > most_frequent){
+            most_frequent = i;
+            lettre_frequent = alphabet;
+        }
+    }
+    return res = { lettre_frequent, most_frequent,};
+}
 int main() {
    cout << "Entrez le nom du fichier : " << flush;
    string filename;
